@@ -1,0 +1,18 @@
+{% extends 'navbar.html' %}
+
+
+{% block content %}
+
+<div class="content">
+    <div class="article">
+        <img class="detail-image" src="{{ article.thumb.url}}"/>
+        <h2>{{ article.title }}</h2>
+        <p>{{  article.body }}</p>
+        <p>{{ article.date }}</p>
+    </div>
+  
+</div>
+<br>
+<br>
+{% endblock %}
+

@@ -1,0 +1,91 @@
+{% load static %}
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>base template</title>
+  <link rel="stylesheet" href="{% static 'home.css' %}">
+</head>
+<body>
+  <div class="navbar">
+    <a href="{% url 'users:list' %}">Home</a>
+    <a href="{% url 'data:booklist' %}">Reservation</a>
+    <a href="{% url 'users:about' %}">About us</a>
+    <div class="dropdown">
+      <button class="dropbtn">Services
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <a href="{% url 'data:commentlist' %}">Reviews</a>
+       
+        <a href="{% url 'data:create_book' %}">Book now</a>
+      </div>
+      </div>
+
+<div class="user">
+  {% if user.is_authenticated %}
+  <form action="{% url 'data:logout' %}" class="logout-link">
+  {% csrf_token %}
+
+  <button class="logout-submit" type="submit">Logout</button>
+</form>
+{% else %}
+<a  class="user-link" href="{% url 'data:login' %}">Login</a>
+ <a  class="user-link" href="{% url 'data:signup' %}">signup</a>
+{% endif %}
+</div>
+      
+  
+    </div>
+   
+  </div>
+
+
+  <div class="content">
+
+<div class="video-container">
+        <video src="{% static 'elite.mp4'  %}" autoplay loop muted>
+        
+        </video>
+        <div class="video-content">
+            <h1 class="logo">elite hotel</h1> 
+        </div>
+        
+    </div>
+
+<br>
+<h2> Class has never been an option </h2>
+<p>Ashdown Park in East Sussex and Tylney Hall in Hampshire are outstanding examples of luxurious country house hotels which recall an age of elegant living that belongs to a bygone era.
+
+  While The Grand Hotel in Eastbourne harks back to the days when the Victorian upper classes retired to the south coast for the summer with their vast entourages.</p>
+
+  <br>
+  <hr>
+{% block content %}
+
+
+{% endblock %}
+
+
+
+<br>
+<br>
+<hr>
+<button class="btn"><a  class="link-button" href="{% url 'data:commentlist' %}">Reviews from clients</a></button>
+
+    <div class="map" id="googleMap" >
+        <h3>Directions</h3>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d63835.86243921687!2d32.56292676083639!3d0.3557750225729326!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sfood!5e0!3m2!1sen!2sug!4v1680747086867!5m2!1sen!2sug" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+
+</div>
+
+
+  </div>
+ 
+
+  <script src="{% static 'slugifyTitle.js' %}"></script>
+</body>
+</html>

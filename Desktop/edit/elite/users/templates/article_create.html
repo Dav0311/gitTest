@@ -1,0 +1,16 @@
+{% extends 'navbar.html' %}
+
+{% block content %}
+
+<div class="create-article">
+    <h1>create article</h1>
+    <hr>
+    <form class="site-form" action="{% url 'users:create' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="create">
+    </form>
+</div>
+
+
+{% endblock %}

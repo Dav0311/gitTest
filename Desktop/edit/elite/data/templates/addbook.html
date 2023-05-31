@@ -1,0 +1,71 @@
+{% load static%}
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>base template</title>
+  <link rel="stylesheet" href="{% static 'home.css' %}">
+</head>
+<body>
+  <div class="navbar">
+    <a href="{% url 'users:list' %}">Home</a>
+    <a href="{% url 'data:booklist' %}">Reservation</a>
+    <a href="{% url 'users:about' %}">About us</a>
+    <div class="dropdown">
+      <button class="dropbtn">Services
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <a href="{% url 'data:commentlist' %}">Reviews</a>
+       
+        <a href="{% url 'data:create_book' %}">Book Now</a>
+      </div>
+      </div>
+
+<div class="user">
+  {% if user.is_authenticated %}
+  <form action="{% url 'data:logout' %}" class="logout-link">
+  {% csrf_token %}
+
+  <button class="logout-submit" type="submit">Logout</button>
+</form>
+
+{% else %}
+<a  class="user-link" href="{% url 'data:login' %}">Login</a>
+ <a  class="user-link" href="{% url 'data:signup' %}">signup</a>
+{% endif %}
+</div>
+      
+  
+    </div>
+   
+  </div>
+
+
+    <div class="content">
+      <h2>create booking</h2>
+            <hr>
+        <div class="create-booking">
+            
+            <div class="form">
+              <form class="add-book" action="{% url 'data:create_book' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form }}
+                <input type="submit" class="link-button" value="book now">
+            </form>
+            </div>
+           <div class="img">
+            <img class="room" src="{% static 'room.jpg' %}" alt="" srcset="" height="500px">
+           </div>
+        </div>
+    </div>
+   
+
+</div>
+</body>
+</html>
+
+
+

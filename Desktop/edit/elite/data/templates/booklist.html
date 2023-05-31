@@ -1,0 +1,22 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+        <h2>Book List</h2>
+        <br>
+        {% for book in books %}
+        <div class="book">
+        
+            <h2>{{ book.service }}</a></h2>
+            
+            <p>{{ book.checkin }}</p>
+            <p>{{ book.checkout }}</p>
+            <p>{{ book.payment }}</p>
+            <p>{{ book.name }}</p>
+            <p>{{ book.date }}</p>
+        </div>
+        <hr>
+        {% endfor %}  
+    </div> 
+
+ {% endblock %}

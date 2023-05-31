@@ -1,0 +1,62 @@
+{% load static%}
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>base template</title>
+  <link rel="stylesheet" href="{% static 'home.css' %}">
+</head>
+<body>
+  <div class="navbar">
+    <a href="{% url 'users:list' %}">Home</a>
+    <a href="{% url 'data:booklist' %}">Reservation</a>
+    <a href="{% url 'users:about' %}">About us</a>
+    <div class="dropdown">
+      <button class="dropbtn">Services
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <a href="{% url 'data:commentlist' %}">Reviews</a>
+       
+        <a href="{% url 'data:create_book' %}">Book Now</a>
+      </div>
+      </div>
+
+<div class="user">
+  {% if user.is_authenticated %}
+  <form action="{% url 'data:logout' %}" class="logout-link">
+  {% csrf_token %}
+
+  <button class="logout-submit" type="submit">Logout</button>
+</form>
+{% else %}
+<a  class="user-link" href="{% url 'data:login' %}">Login</a>
+ <a  class="user-link" href="{% url 'data:signup' %}">signup</a>
+{% endif %}
+</div>
+      
+  
+  </div>
+   
+  </div>
+
+
+    <div class="content">
+    <h2>about page</h2>
+    <br>
+      <hr>  
+      <div class="about">
+        <p>Hospitality is not to change people, but to offer them space where change can take place. It is not to bring men and women over to our side, but to offer freedom not disturbed by dividing lines</p>
+        <p>Ashdown Park in East Sussex and Tylney Hall in Hampshire are outstanding examples of luxurious country house hotels which recall an age of elegant living that belongs to a bygone era.
+
+          While The Grand Hotel in Eastbourne harks back to the days when the Victorian upper classes retired to the south coast for the summer with their vast entourages.</p>
+          <p>Elite Hotel is a hotel in Kampala, Central Uganda located on Masaka Road. Elite Hotel is situated nearby to Lubaga Police Station and <strong>Makerere University Business School</strong>.
+          You can email us on <strong>info@eliteHotel.com</strong> or call us on <i>+256 978 425</i>
+          </p>
+      </div>
+    </div>
+</div>
+</body>
+</html>

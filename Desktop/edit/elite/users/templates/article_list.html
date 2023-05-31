@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+
+{% block content%}
+
+{% for article in articles %}
+    <div class="double-container">
+        
+        <div class="homeimg">
+           <img src="{{ article.thumb.url}}" alt="" srcset="" width="350" height="300">
+        </div>
+    <div class="text">
+        <h2><a href="{% url 'users:detail' slug=article.slug %}">{{ article.title }}</a></h2>
+        <p>{{ article.snippet }}</p>
+        <p>{{ article.date }}</p>
+        <button class="btn"><a class="link-button" href="{% url 'data:create_book' %}">Book Now </a></button>
+    </div>
+     
+    </div>
+    {% endfor %}
+  {% endblock %}

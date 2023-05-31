@@ -1,0 +1,33 @@
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'home.css' %}">
+
+<div class="content">
+  <div class="log-content">
+    <h3 class="title">login page</h3>
+    <br>
+    <div class="logo">
+      <img src="{% static 'elitelogo.png' %}" alt="" srcset="">
+    </div>
+    <br>
+    <div class="form">
+      <form class="site-form" action="{% url 'data:login' %}" method="post">
+        {% csrf_token %}
+      {{ form }}
+      
+      {% if request.GET.next %}
+      <input type="hidden" name="next" value="{{ request.GET.next }}">
+      {% endif %}
+      <input class="login" type="submit" value="login">
+    </form>
+    <p>if you dont have an account.....  <a  class="user-link" href="{% url 'data:signup' %}">signup</a> here!</p>
+   
+    </div>
+  </div>
+</div>
+
+  
+
+
+
+

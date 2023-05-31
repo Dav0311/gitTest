@@ -1,0 +1,28 @@
+<!-- commentlist.html -->
+
+
+
+{% extends 'navbar.html' %}
+
+{% block content %}
+    <h2>Comments</h2>
+
+    <ul>
+        {% for comment in comments %}
+        <p>  {{ comment.author }} - <span class="time"> {{ comment.created_date }}</span></p>
+          
+        <p> {{ comment.body }}</p>
+          
+            <hr>
+        {% empty %}
+            <li>No comments yet.</li>
+        {% endfor %}
+       
+    </ul>
+
+    <div class="btn">
+        <a  class="link-button" href="{% url 'data:create_comment' %}">create comment</a>
+    </div>
+{% endblock %}
+
+
